@@ -1,5 +1,6 @@
 package meritis.mbouzidi.UnitTesting;
 
+import meritis.mbouzidi.UnitTesting.input.IReaderService;
 import meritis.mbouzidi.UnitTesting.library.entity.Library;
 import meritis.mbouzidi.UnitTesting.library.service.IBookService;
 import meritis.mbouzidi.UnitTesting.library.service.ILibraryService;
@@ -11,6 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class UnitTestingApplication implements ApplicationRunner {
+
+	@Autowired
+	private IReaderService readerService;
 
 	@Autowired
 	private IBookService bookService;
@@ -27,5 +31,6 @@ public class UnitTestingApplication implements ApplicationRunner {
 		Library librarySoleil = libraryService.findById(1);
 		long nbBooks = libraryService.countBooks(librarySoleil.getId());
 		System.out.println(String.format("Il y a %h dans la librairie: %s",nbBooks, librarySoleil.getName()));
+		System.out.println(readerService.read("C:\\Users\\Cosmo\\Documents\\Projects\\SpringBoot\\UnitTesting\\src\\main\\resources\\file.txt"));
 	}
 }
