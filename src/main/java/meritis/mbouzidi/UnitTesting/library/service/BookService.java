@@ -24,10 +24,10 @@ public class BookService implements IBookService{
     }
 
     @Override
-    public Integer bookAge(Integer id) throws Exception {
+    public Integer bookAge(Integer id) throws RuntimeException {
         Book book = repository.findById(id).orElse(null);
         if(book==null){
-            throw new Exception("Book Not Found");
+            throw new RuntimeException("Book Not Found");
         }
         return LocalDate.now().getYear() - book.getYearOfPublication();
     }

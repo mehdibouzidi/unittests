@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IBookService {
     List<Book> getAllBooks();
-    Integer bookAge(Integer id) throws Exception;
+    Integer bookAge(Integer id) throws RuntimeException;
 }
